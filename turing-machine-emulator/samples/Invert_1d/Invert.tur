@@ -1,0 +1,12 @@
+alphabet = [ #, 0, 1]
+tapes = [ right ]
+
+START:
+    # -> #R INVERT
+    0 -> #H ERROR
+    1 -> #H ERROR
+
+INVERT:
+    # -> #H STOP
+    0 -> 1R INVERT
+    1 -> 0R INVERT

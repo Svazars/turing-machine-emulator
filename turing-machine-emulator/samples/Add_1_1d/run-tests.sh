@@ -1,0 +1,1 @@
+java -jar ../../turing-machine-emulator.jar --program Add.tur --test Add.test

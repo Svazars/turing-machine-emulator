@@ -1,0 +1,1 @@
+java -jar ../../turing-machine-emulator.jar --program hello.tur --input "#" -trace

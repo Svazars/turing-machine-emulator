@@ -1,0 +1,25 @@
+alphabet = [ #, 0, 1]
+tapes = [ right ]
+
+START:
+ # -> #R SHIFT
+
+SHIFT:
+ # -> #H STOP
+ 0 -> 0H ADD_3
+ 1 -> 1H ADD_3
+
+ADD_3:
+ 0 -> 1R ADD_1
+ 1 -> 0R ADD_2
+ # -> 1R ADD_1
+
+ADD_2:
+ 0 -> 0R ADD_1
+ 1 -> 1R ADD_1
+ # -> 0R ADD_1
+
+ADD_1:
+ 0 -> 1H STOP
+ 1 -> 0R ADD_1
+ # -> 1H STOP

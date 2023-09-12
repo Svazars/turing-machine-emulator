@@ -1,0 +1,57 @@
+// =============================================
+// Program  expects that tape is infinite to the
+// right and filled with "#"-symbol
+//
+// BEFORE
+//--------------------------------------------
+//      0   1   2   3   4   5   6   7
+//    | # | # | # | # | # | # | # | # ...
+//      ^
+//--------------------------------------------
+// AFTER
+//--------------------------------------------
+//      0   1   2   3   4     5     6   7
+//    | h | e | l | l | o | world | # | # ...
+//                            ^
+//--------------------------------------------
+// =============================================
+
+// python-like array to define 'letters'
+// first 'letter' is null-symbol (used to mark start cell and not-used-by-input cells)
+// note: "/" symbol CANNOT be used as a letter (in order to simplify comments parsing)
+alphabet = [ #, h, e, l, o, world]
+
+// tapes = [tape_1, ..., tape_N]
+// 	tape_i = right | left | dual
+// 		right -- infinite to the right (valid arrow positions are positive integers and zero)
+// 		left -- infinite to the left (valid arrow positions are negative integers and zero)
+//		dual -- infinite tape (valid arrow positions are arbitrary integers)
+tapes = [ right ]
+
+// program itself
+
+START:
+	# -> hR H
+H:
+	# -> eR E
+E:
+	# -> lR L
+L:
+	# -> lR LL
+LL:
+	# -> oR O
+O:
+	# -> eR WORLD	
+WORLD:
+    // you are free to insert comments here	
+	# -> #H OTHER_STATE // and there
+OTHER_STATE: // even there
+	# -> #H non_capital_letters_state
+non_capital_letters_state:
+    // please note that states are case-sensitive, THIS_STATE != this_state 
+	# -> #L returned_left
+returned_left:
+	e -> worldH STOP
+
+// If emulator needs to execute absent transition rules (e.g. START h -> ...) it just stops with corresponding error message.
+// Read --help and try to run the interpreter with non-trivial input making it crash
